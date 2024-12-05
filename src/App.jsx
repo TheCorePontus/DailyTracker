@@ -49,7 +49,7 @@ export default function App() {
   return <>
     <form onSubmit={handleSubmit} className='new-item-form'>
     <div className='form-row'>
-        <h1 style={{textAlign:'center', color:"white"}}>DAILY TRACKER</h1> <br />
+        <h1 style={{textAlign:'center', color:"white"}}> DAILY TRACKER ღ </h1>
         <label htmlFor="item" style={{textAlign:"center", marginBottom:"6px"}}>Add New Item</label>
         <input value={newItem}
           onChange={e => setNewItem(e.target.value)}
