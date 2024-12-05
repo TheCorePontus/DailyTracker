@@ -1,141 +1,177 @@
 * {
-    font-family: Arial, Helvetica, sans-serif;
-    box-sizing: border-box;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: #f1f5f9;
+  min-height: 100vh;
+  margin: 0;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+#particles-js {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.new-item-form {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+  min-width: 450px;
+  width: 100%;
+  margin-top: 2rem;
+  background: rgba(30, 41, 59, 0.7);
+  padding: 2rem;
+  border-radius: 1rem;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2),
+              0 0 0 1px rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.form-row input {
+  padding: 0.75rem 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  background: rgba(15, 23, 42, 0.3);
+  border-radius: 0.5rem;
+  color: #f1f5f9;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.form-row input:focus {
+  border-color: #8b5cf6;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.3);
+  outline: none;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 1rem;
+  background: #8b5cf6;
+  color: white;
+}
+
+.btn:hover {
+  background: #7c3aed;
+  transform: translateY(-1px);
+}
+
+.btn.btn-danger {
+  background: #f43f5e;
+  color: white;
+  padding: 0.5rem 1rem;
+}
+
+.btn.btn-danger:hover {
+  background: #e11d48;
+}
+
+.header {
+  color: #f1f5f9;
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin: 2rem 0 1rem 0;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.list li {
+  background: rgba(30, 41, 59, 0.7);
+  padding: 1rem;
+  border-radius: 0.75rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.2s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.list li:hover {
+  background: rgba(30, 41, 59, 0.9);
+  transform: translateX(4px);
+}
+
+.list li label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.list li label::before {
+  content: "";
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.375rem;
+  transition: all 0.2s ease;
+}
+
+.list li:has(input:checked) label::before {
+  content: "✓";
+  background: #8b5cf6;
+  border-color: #8b5cf6;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+}
+
+.list li input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.list li:has(input:checked) label {
+  color: rgba(241, 245, 249, 0.5);
+  text-decoration: line-through;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
   }
-  
-  body {
-    background: #333;
-    color: hsl(200, 100%, 90%);
-    max-width: 400px;
-    padding: 1rem;
-    margin: 0 auto;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .new-item-form {
-    margin-top: 100px;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  
-  .form-row {
-    display: flex;
-    flex-direction: column;
-    gap: 0.1rem;
-  }
-  
-  .btn {
-    background: hsl(200, 100%, 50%, 0.1);
-    border: 1px solid hsl(200, 100%, 50%);
-    color: hsl(200, 100%, 50%);
-    padding: 0.25em 0.5em;
-    border-radius: 0.25em;
-    cursor: pointer;
-    outline: none;
-  }
-  
-  .btn:hover,
-  .btn:focus-visible {
-    background: hsl(200, 100%, 50%, 0.2);
-  }
-  
-  .btn.btn-danger {
-    background: hsl(0, 100%, 40%, 0.1);
-    border: 1px solid hsl(0, 100%, 40%);
-    color: hsl(0, 100%, 40%);
-  }
-  
-  .btn.btn-danger:hover,
-  .btn.btn-danger:focus-visible {
-    background: hsl(0, 100%, 40%, 0.2);
-  }
-  
-  .new-item-form input {
-    outline: none;
-    border: 1px solid hsl(200, 100%, 40%);
-    background: hsl(200, 100%, 30%);
-    border-radius: 0.25em;
-    padding: 0.25em 0.5em;
-    color: hsl(200, 100%, 90%);
-  }
-  
-  .new-item-form input:focus {
-    border: 1px solid hsl(200, 100%, 70%);
-  }
-  
-  .header {
-    font-size: 1.5rem;
-    margin-top: 1.5rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .list {
-    margin: 0;
-    padding: 0;
-    margin-left: 1rem;
-    list-style: none;
-  }
-  
-  .list li:has(input:checked) label {
-    color: hsl(200, 20%, 40%);
-  }
-  
-  .list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-  }
-  
-  .list li {
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
-  }
-  
-  .list li label {
-    display: flex;
-    gap: 0.25rem;
-    cursor: pointer;
-    align-items: center;
-  }
-  
-  .list li:has(input:focus-visible) label {
-    outline: 1px solid hsl(200, 100%, 50%);
-  }
-  
-  .list li input {
-    outline: none;
-    width: 0;
-    height: 0;
-    appearance: none;
-    pointer-events: none;
-    position: absolute;
-  }
-  
-  .list li label::before {
-    content: "";
-    display: block;
-    width: 0.9rem;
-    height: 0.9rem;
-    background: hsl(200, 100%, 90%);
-    border-radius: 0.25em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .list li label:hover::before {
-    background: hsl(200, 100%, 80%);
-  }
-  
-  .list li:has(input:checked) label::before {
-    content: "✔";
-    background: hsl(200, 100%, 40%);
-    color: hsl(200, 100%, 90%);
-    font-size: 0.75rem;
-    font-weight: bold;
-  }
-  
-  .list li:has(input:checked) label:hover::before {
-    background: hsl(200, 100%, 30%);
-  }
+}
+
+.list li {
+  animation: slideIn 0.2s ease-out;
+}
